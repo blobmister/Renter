@@ -11,17 +11,23 @@ export default function Register() {
 
     let navigate = useNavigate();
 
-    const createAccount = async () => {
+    const createAccount = async (e) => {
+        e.preventDefault();
+
         console.log(email, password, name, location)
         const payload = {name, email, password, location}
 
         try {
             const response = await fetch("https://renter-production-faad.up.railway.app/api/auth/register", {
                 method: "POST",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
             });
 
             if (response.ok) {
+                const data = await response.json();
+                const user = data.user;
+                console.log("Registered!", data);
                 navigate("/")
             }
         } catch (err) {
