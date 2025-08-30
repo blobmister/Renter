@@ -6,7 +6,7 @@ import TopBar from './components/topBar.jsx'
 
 function App() {
   let navigate = useNavigate();
-  const {user} = useUser();
+  const { user } = useUser();
 
   return (
     <div className='landingContainer'>
