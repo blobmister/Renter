@@ -8,11 +8,18 @@
 import './styles/sidebar.css'
 import {useLocation} from "react-router";
 import {useEffect, useState} from "react";
+import {useUser} from "../UserContext.jsx";
 
 
 async function fetchUserInfo(userId, setData, setError, setLoading, setRating) {
     try {
-        const response = await fetch(`https://renter-production-faad.up.railway.app/api/user/getUserInfo/{userId}`);
+        const response = await fetch(`https://renter-production-faad.up.railway.app/api/user/getUserInfo/{userId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            }
+        });
         if (!response.ok) {
             throw new Error("Something went wrong fetching data!");
         }
@@ -20,7 +27,13 @@ async function fetchUserInfo(userId, setData, setError, setLoading, setRating) {
         const json = await response.json();
         setData(json);
 
-        const response2 = await fetch(`https://renter-production-faad.up.railway.app/api/user/getAveRevScore/{userId}`);
+        const response2 = await fetch(`https://renter-production-faad.up.railway.app/api/user/getAveRevScore/{userId}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${localStorage.getItem("token")}`
+            }
+        });
         if (!response2.ok) {
             throw new Error("Something went wrong fetching data!");
         }
@@ -37,7 +50,8 @@ async function fetchUserInfo(userId, setData, setError, setLoading, setRating) {
 
 function SideBar() {
     const location = useLocation();
-    const { userId } = location.state || {userId: "77362a8b-de73-474a-8d3f-49cc24bb48d1"}
+    const { user } = useUser();
+    const { userId } = location.state || user.id;
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [rating, setRating] = useState(0);
