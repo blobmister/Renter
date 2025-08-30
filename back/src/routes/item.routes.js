@@ -14,7 +14,7 @@ router.use(requireAuth);
 
 router.get('/getAll', getAllItems);
 router.get('/getUserItems/:userId', getUserItems);
-router.post('/', createItems);
+router.post('/:userId', createItems);
 router.put('/:id', updateItem);
 router.delete('/:id', deleteItem);
 

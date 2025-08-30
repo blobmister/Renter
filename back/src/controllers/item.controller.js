@@ -9,8 +9,9 @@ const supabase = createClient(
 const createItems = async (req, res) => {
     const { item_name, description } = req.body;
     try {
+        const userId = req.params.userId;
         const { data, error } = await supabase.from('items').insert([
-            { user_id: req.user.id, item_name, description },
+            { user_id: userId, item_name, description },
         ])
         if (error) {
             return res.status(400).json({ error: error.message });
@@ -39,11 +40,7 @@ const getAllItems = async (req, res) => {
 
 const getUserItems = async (req, res) => {
     try {
-        let userId = req.user.id;
-
-        if (req.params.userId) {
-            userId = req.params.userId;
-        }
+        const userId = req.params.userId;
 
         const { data, error } = await supabase
             .from('items')
