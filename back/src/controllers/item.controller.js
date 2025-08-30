@@ -10,7 +10,7 @@ const createItems = async (req, res) => {
     const { item_name, description } = req.body;
     try {
         const { data, error } = await supabase.from('items').insert([
-            { user_id: req.user.user.id, item_name, description },
+            { user_id: req.user.id, item_name, description },
         ])
         if (error) {
             return res.status(400).json({ error: error.message });
