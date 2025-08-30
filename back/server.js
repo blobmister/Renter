@@ -2,8 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 const authRoutes = require('./src/routes/auth.routes');
-const { createClient } = require('@supabase/supabase-js');
-
+const userRoutes = require('./src/routes/user.routes');
+const itemRoutes = require('./src/routes/item.routes');
 const app = express();
 
 
@@ -15,6 +15,7 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/items', itemRoutes);
+app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
