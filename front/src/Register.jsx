@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useUser } from "./UserContext";
 import "./AccountForm.css"
 
 export default function Register() {
@@ -10,6 +11,7 @@ export default function Register() {
     const [location, setLocation ] = useState("");
 
     let navigate = useNavigate();
+    const {userLogin} = useUser();
 
     const createAccount = async (e) => {
         e.preventDefault();
@@ -43,11 +45,13 @@ export default function Register() {
 
             if (response.ok) {
                 const data = await response.json();
-                const session = data.user;
+                const session = data.session;
                 console.log("Logged in!", session);
 
                 const token = session.access_token;
                 localStorage.setItem("token", token);
+
+                userLogin(session.user);
 
                 navigate("/")
             }
