@@ -12,6 +12,13 @@
     left: 0;
 }
 
+.dashboard-content {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: calc(100% - 90px);
+}
+
 /* * {
     top: 0;
     left: 0;

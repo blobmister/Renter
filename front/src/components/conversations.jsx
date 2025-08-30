@@ -6,9 +6,9 @@ function Conversations() {
       <button className="collection-title">Conversations &#62;</button>
       <div className="items-container">
         {/* Map through conversations and display them, dummy first */}
-        <div className="user-thumbnail">Dummy Conversation 1</div>
-        <div className="user-thumbnail">Dummy Conversation 2</div>
-        <div className="user-thumbnail">Dummy Conversation 3</div>
+        <button className="user-thumbnail">C1</button>
+        <button className="user-thumbnail">C2</button>
+        <button className="user-thumbnail">C3</button>
       </div>
     </div>
   );
