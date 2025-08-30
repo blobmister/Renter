@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from 'react-router'
 import './Catalogue.css'
+import TopBar from './components/topBar.jsx'
 
 // Sample data
 const items = [
@@ -38,6 +39,7 @@ export default function CataloguePage() {
   return (
   <>
     <div className="container">
+      <TopBar align-self="flex-start"/>
       <div className="header-section">
         <h1>Items Available</h1>
       
