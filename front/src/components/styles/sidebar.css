@@ -32,3 +32,28 @@
   color: #bbb;
   text-align: justify;
 }
+
+.modal-container {
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-overlay {
+  background-color: rgba(0,0,0,0.7);
+  position: fixed;
+  top: 0; left: 0;
+  right: 0; bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 2em;
+  border-radius: 1em;
+  max-width: 600px;
+  width: 90%;
+  outline: none;
+}

@@ -6,8 +6,39 @@
 // import NumListed from './numListed.jsx'
 // import NumRented from './numRented.jsx'
 import './styles/sidebar.css'
+import Modal from "react-modal";
+import { useState } from 'react';
+
+Modal.setAppElement('#root');
 
 function SideBar() {
+    const [modalOpen, setModalOpen] = useState(false);
+    const [itemName, setItemName] = useState("");
+    const [itemDesc, setItemDesc] = useState("");
+
+    const postItem = async (e) => {
+        e.preventDefault();
+
+        const payload = {itemName, itemDesc};
+
+        try {
+            const response = await fetch("https://renter-production-faad.up.railway.app/api/item/", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                console.log("posted item", itemName)
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    }
+
     return (
         <div className="sidebar-container">
             <div className="pic-name-container">
@@ -59,7 +90,24 @@ function SideBar() {
 
             <div style={{display: 'flex', alignSelf: 'center', marginTop: '1em'}}>
                 <button style={{backgroundColor: '#ffffffff', color: '#000000'}}>Edit Profile</button>
+                <button onClick={() => setModalOpen(true)}>Add Item</button>
             </div>
+            <Modal
+                isOpen={modalOpen}
+                overlayClassName="modal-overlay"
+                className="modal-content"
+            >
+                <div className='modal-container'>
+                <h2>Add an Item</h2>
+                <form onSubmit={postItem}>
+                    <input type="text" placeholder='Item Name' value={itemName} onChange={(e) => setItemName(e.target.value)}></input>
+                    <input type="text" placeholder='Item description' value={itemDesc} onChange={(e) => setItemDesc(e.target.value)}></input>
+                    <button type="submit">Post Item</button>
+                </form>
+                <button onClick={() => setModalOpen(false)}>Close</button>
+                    
+                </div>
+            </Modal>
 
         </div>
     )
