@@ -36,26 +36,27 @@ export default function CataloguePage() {
   return (
   <>
     <div className="container">
-      <h1>Items Available</h1>
+      <div className="header-section">
+        <h1>Items Available</h1>
       
-      {/* Search bar */}
-      <input
-        type="text"
-        className="search-bar"
-        placeholder="Search items..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
-      />
+        {/* Search bar */}
+        <input
+          type="text"
+          className="search-bar"
+          placeholder="Search items..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+        />
+      </div>
 
       {/* All items */}
       <div className="grid">
         {filteredItems.map((item) => (
-          <div key={item.id} className="card">
+          <div key={item.id} className="card" onClick={() => openModal(item)}>
             <img src={item.image} alt={item.name} />
             <div className="card-content">
               <h2>{item.name}</h2>
-              <p>{item.price || "Price not listed"}</p>
-              <button onClick={() => openModal(item)}>View Item</button>   
+              <p>{item.price || "Price not listed"}</p>  
             </div>
           </div>
         ))}
