@@ -11,13 +11,10 @@ const app = express();
 // Middleware
 app.use(cors());
 app.use(express.json());
-const supabase = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_KEY
-);
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/items', itemRoutes);
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {

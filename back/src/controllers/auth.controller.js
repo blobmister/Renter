@@ -1,49 +1,57 @@
-const jwt = require('jsonwebtoken');
-const bcrypt = require('bcryptjs');
-const User = require('../models/user.model');
+const { createClient } = require('@supabase/supabase-js');
+require('dotenv').config();
 
-exports.register = async (req, res) => {
-  try {
-    const { email, password } = req.body;
-    
-    const existingUser = await User.findOne({ email });
-    if (existingUser) {
-      return res.status(400).json({ message: 'Email already exists' });
+const supabase = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_KEY
+)
+
+const registerUser = async (req, res) => {
+    const { name, email, password, location } = req.body;
+
+    if (!name || !email || !password || !location)
+        return res.status(400).json({ error: 'Email and password required' });
+
+    try {
+        const { data, error } = await supabase.auth.admin.createUser({
+            email,
+            password,
+            email_confirm: true,
+            user_metadata: {
+                name: name,
+                location: location,
+            }
+        });
+
+        if (error) return res.status(400).json({ error: error.message });
+
+        res.status(201).json({ message: 'User registered', user: data });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
     }
-
-    const user = new User({ email, password });
-    await user.save();
-
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '24h'
-    });
-
-    res.status(201).json({ token });
-  } catch (error) {
-    res.status(500).json({ message: 'Error creating user', error: error.message });
-  }
 };
 
-exports.login = async (req, res) => {
-  try {
+const loginUser = async (req, res) => {
     const { email, password } = req.body;
-    
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(401).json({ message: 'Invalid credentials' });
+
+    if (!email || !password)
+        return res.status(400).json({ error: 'Email and password required' });
+
+    try {
+        const { data, error } = await supabase.auth.signInWithPassword({
+            email,
+            password
+        });
+
+        if (error) return res.status(401).json({ error: error.message });
+
+        // Returns session info including access_token
+        res.json({ message: 'Login successful', session: data.session });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal server error' });
     }
-
-    const isPasswordValid = await bcrypt.compare(password, user.password);
-    if (!isPasswordValid) {
-      return res.status(401).json({ message: 'Invalid credentials' });
-    }
-
-    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, {
-      expiresIn: '24h'
-    });
-
-    res.json({ token });
-  } catch (error) {
-    res.status(500).json({ message: 'Error logging in', error: error.message });
-  }
 };
+
+module.exports = { registerUser, loginUser };
