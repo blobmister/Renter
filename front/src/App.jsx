@@ -6,7 +6,7 @@ function App() {
   let navigate = useNavigate();
 
   return (
-    <div className='container'>
+    <div className='landingContainer'>
       <div className='header'>
         <p>Logo</p>
       </div>
