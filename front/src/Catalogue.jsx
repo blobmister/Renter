@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router'
 import './Catalogue.css'
 
 // Sample data
@@ -15,6 +16,7 @@ export default function CataloguePage() {
   const [catalogue] = useState(items);
   const [searchTerm, setSearchTerm] = useState("");
   const [modalItem, setModalItem] = useState(null);
+  let navigate = useNavigate();
 
   // Open popup
   const openModal = (item) => setModalItem(item);
@@ -76,7 +78,7 @@ export default function CataloguePage() {
               alt="Profile"
               className="w-32 h-32 rounded-full mx-auto border-4 border-blue-500 shadow-md"
             />
-            <p>{modalItem.lister}</p>
+            <button onClick={() => {navigate("/dashboard")}}>{modalItem.lister}</button>
           </div>
         </div>
       )}
