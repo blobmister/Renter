@@ -88,22 +88,22 @@ function SideBar() {
         }
     };
 
-    if (loading) return <h1>Loading...</h1>;
-    if (error) return <h1>Error retrieving profile</h1>;
+    // if (loading) return <h1>Loading...</h1>;
+    // if (error) return <h1>Error retrieving profile</h1>;
 
     return (
         <div className="sidebar-container">
             <div className="pic-name-container">
                 <span className="profile-pic"></span>
                 <div className="user-info">
-                    <p className="user-name">{data?.name || "No Name"}</p>
-                    <p className="user-location">{data?.location || "Unknown"}</p>
+                    <p className="user-name">{data?.name || "John Doe"}</p>
+                    <p className="user-location">{data?.location || "Sydney"}</p>
                 </div>
             </div>
 
             <div className="about-me">
                 <p className="section-title">About Me</p>
-                <p className="section-text">{data?.description || "No description"}</p>
+                <p className="section-text">{data?.description || "Hi, I've got some good high quality power tools to rent! Contact me at 04xxxxxxxx if you want to have a chat :)"}</p>
             </div>
 
             <div className="ratings-container">
