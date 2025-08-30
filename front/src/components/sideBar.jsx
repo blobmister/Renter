@@ -7,7 +7,6 @@
 // import NumRented from './numRented.jsx'
 import './styles/sidebar.css'
 import Modal from "react-modal";
-import { useState } from 'react';
 
 Modal.setAppElement('#root');
 import {useLocation} from "react-router";
@@ -160,6 +159,7 @@ function SideBar() {
 
             <div className="edit-profile-container">
                 <button className="edit-profile-button">Edit Profile</button>
+            </div>
             <div style={{display: 'flex', alignSelf: 'center', marginTop: '1em'}}>
                 <button style={{backgroundColor: '#ffffffff', color: '#000000'}}>Edit Profile</button>
                 <button onClick={() => setModalOpen(true)}>Add Item</button>
