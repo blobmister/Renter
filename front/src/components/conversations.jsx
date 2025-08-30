@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './styles/collections.css';
 
 function Conversations({ isExpanded, onExpand, onCollapse }) {
-  const dummyConvos = [
+  const initialConvos = [
     {name: "Krish", conversation: [
       {speaker: "Krish", text: "Hi John!"},
       {speaker: "John", text: "Hi Krish, you looking for something to borrow?"},
@@ -41,7 +41,23 @@ function Conversations({ isExpanded, onExpand, onCollapse }) {
   ];
 
   const [popupOpen, setPopupOpen] = useState(false);
-  const [selectedConvo, setSelectedConvo] = useState(null);
+  const [selectedConvoIdx, setSelectedConvoIdx] = useState(null);
+  const [textToSend, setTextToSend] = useState("");
+  const [dummyConvos, setDummyConvos] = useState(initialConvos);
+
+  const sendText = (e) => {
+    e.preventDefault();
+    if (selectedConvoIdx === null || textToSend.trim() === "") return;
+
+    setDummyConvos(prev =>
+      prev.map((convo, i) =>
+        i === selectedConvoIdx
+          ? { ...convo, conversation: [...convo.conversation, { speaker: "John", text: textToSend }] }
+          : convo
+      )
+    );
+    setTextToSend(""); // clear input
+  };
 
   return (
     <div className={isExpanded ? "expanded-container" : "minimised-container"}>
@@ -54,17 +70,21 @@ function Conversations({ isExpanded, onExpand, onCollapse }) {
       <div className="items-container">
         {/* Map through conversations n display them, dummy first */}
         {dummyConvos.map((convo, index) => (
-          <button key={index} onClick={() => {setSelectedConvo(convo);setPopupOpen(true);console.log("clicked", selectedConvo.name)}} className="user-thumbnail">{convo.name[0]}</button>
+          <button key={index} onClick={() => {setSelectedConvoIdx(index);setPopupOpen(true);}} className="user-thumbnail">{convo.name[0]}</button>
         ))}
       </div>
 
       {popupOpen && 
         <div className="conversation-modal">
           <div>
-            <h2>{selectedConvo.name}</h2>
-            {selectedConvo.conversation.map((convo, index) => (
+            <h2>{dummyConvos[selectedConvoIdx].name}</h2>
+            {dummyConvos[selectedConvoIdx].conversation.map((convo, index) => (
               <p key={index}><b>{convo.speaker}: </b>{convo.text}</p>
             ))}
+            <form onSubmit={(e) => sendText(e)}>
+              <input type="text" value={textToSend} onChange={(e) => setTextToSend(e.target.value)} />
+              <button type='submit'>Send</button>
+            </form>
             <button onClick={() => setPopupOpen(false)}>Close</button>
           </div>
         </div>
