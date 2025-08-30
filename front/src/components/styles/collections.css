@@ -102,3 +102,11 @@
     overflow-x: hidden;
     overflow-y: auto;
 }
+
+.conversation-modal {
+    width: 100%;
+    border-width: 2px;
+    border-color: black;
+    color: black;
+    margin-bottom: 10px;
+}
