@@ -19,7 +19,7 @@ async function fetchUserInfo(userId, setData, setError, setLoading, setRating) {
         if (!response.ok) throw new Error("Failed fetching user info");
 
         const json = await response.json();
-        setData(json.data);
+        setData(json);
 
         const response2 = await fetch(`https://renter-production-faad.up.railway.app/api/users/getAveRevScore/${userId}`, {
             method: "GET",
