@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useUser } from "./UserContext";
 import "./AccountForm.css"
 
 export default function Register() {
@@ -10,6 +11,7 @@ export default function Register() {
     const [location, setLocation ] = useState("");
 
     let navigate = useNavigate();
+    const {userLogin} = useUser();
 
     const createAccount = async (e) => {
         e.preventDefault();
@@ -28,12 +30,34 @@ export default function Register() {
                 const data = await response.json();
                 const user = data.user;
                 console.log("Registered!", data);
-                navigate("/")
             }
         } catch (err) {
             console.error(err);
         }
 
+        //Login
+        try {
+            const response = await fetch("https://renter-production-faad.up.railway.app/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const session = data.session;
+                console.log("Logged in!", session);
+
+                const token = session.access_token;
+                localStorage.setItem("token", token);
+
+                userLogin(session.user);
+
+                navigate("/")
+            }
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     return (

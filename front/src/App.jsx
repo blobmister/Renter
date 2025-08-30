@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
+import { useUser } from './UserContext';
 import './App.css'
 
 function App() {
   let navigate = useNavigate();
+  const {user} = useUser();
 
   return (
     <div className='landingContainer'>
       <div className='header'>
         <p>Logo</p>
+        {user.email}
       </div>
       <div className='body'>
         <div className='sidebar'>
