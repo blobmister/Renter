@@ -15,7 +15,7 @@ function App() {
         <input className="search-bar" type="text" name="search" placeholder="enter keyword(s)"></input>
         <input className="search-bar" type="text" name="location" placeholder="enter location"></input>
         <button className="search" onClick={() => navigate('/catalogue')}>search</button>
-        <button className="profile-button" onClick={() => navigate('/dashboard')}>My Profile | Login/Register </button>
+        <button className="profile-button" onClick={() => {user ? navigate('/dashboard') : navigate('/login')}}>{ user ? "My Profile" : "Login/Register" }</button>
       </div>
 
     </div>
