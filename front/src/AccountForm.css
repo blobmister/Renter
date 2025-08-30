@@ -3,7 +3,7 @@
     width: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
 }
 
 .container input {
@@ -14,7 +14,6 @@
 
 .inputBlock {
     width: 50%;
-    height: 50%;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
