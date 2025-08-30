@@ -6,6 +6,7 @@ import App from './App.jsx'
 import Login from "./Login.jsx"
 import Register from './Register.jsx';
 import Dashboard from './components/dashboard.jsx';
+import CataloguePage from './Catalogue.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -18,6 +19,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/catalogue" element={<CataloguePage />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
