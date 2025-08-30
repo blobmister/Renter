@@ -3,7 +3,7 @@ import './Catalogue.css'
 
 // Sample data
 const items = [
-  { id: 1, name: "Product A", description: "desc 1", price: "price1", image: "https://via.placeholder.com/150", lister: "lister1" },
+  { id: 1, name: "Product A", description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin consequat nulla vitae tellus dictum, eget pellentesque augue sagittis. Curabitur quam risus, commodo at ultrices nec, ultrices a metus. Donec volutpat nulla id ex dignissim vestibulum. Nullam tempus pharetra odio, at rutrum risus luctus sit amet. Lorem ipsum dolor sit amet.", price: "price1", image: "https://via.placeholder.com/150", lister: "lister1" },
   { id: 2, name: "Product B", description: "desc 2", price: "price2", image: "https://via.placeholder.com/150", lister: "lister1" },
   { id: 3, name: "Product C", description: "desc 3", price: "price3", image: "https://via.placeholder.com/150", lister: "lister1" },
   { id: 4, name: "Product D", description: "desc 4", price: "price4", image: "https://via.placeholder.com/150", lister: "lister1" },

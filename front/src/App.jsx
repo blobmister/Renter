@@ -26,6 +26,7 @@ function App() {
             </ul>
             
             <button onClick={() => {console.log("hi"); navigate("/dashboard")}}>Go to Dashboard</button>
+            <button onClick={() => {console.log("hi"); navigate("/catalogue")}}>Search</button>
           </div>
         </div>
         <div className='map'></div>
