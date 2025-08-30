@@ -13,10 +13,16 @@ function App() {
       <div className='body'>
         <div className='sidebar'>
           <div className='search'>
-            <p style={{margin: 0}}>Search</p>
+            <p>Search</p>
           </div>
           <div className='profile'>
-            Profile
+            <ul>
+              <li>My Profile</li>
+              <li>Conversations</li>
+              <li>Items Listed</li>
+              <li>Items Saved</li>
+            </ul>
+            
             <button onClick={() => {console.log("hi"); navigate("/dashboard")}}>Go to Dashboard</button>
           </div>
         </div>
