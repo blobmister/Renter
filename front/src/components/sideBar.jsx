@@ -6,6 +6,7 @@ import { useUser } from "../UserContext.jsx";
 Modal.setAppElement('#root');
 
 async function fetchUserInfo(userId, setData, setError, setLoading, setRating) {
+    console.log("fetching user info with id: " + userId);
     try {
         const response = await fetch(`https://renter-production-faad.up.railway.app/api/users/getUserInfo/${userId}`, {
             method: "GET",
