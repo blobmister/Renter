@@ -11,7 +11,6 @@ function App() {
     <div className='landingContainer'>
       <div className='header'>
         <p>Logo</p>
-        {user.email}
       </div>
       <div className='body'>
         <div className='sidebar'>
@@ -20,7 +19,7 @@ function App() {
           </div>
           <div className='profile'>
             <ul>
-              <li>My Profile</li>
+              <li>My Profile {user && user.email}</li>
               <li>Conversations</li>
               <li>Items Listed</li>
               <li>Items Saved</li>
