@@ -13,7 +13,8 @@ import {useUser} from "../UserContext.jsx";
 
 async function fetchUserInfo(userId, setData, setError, setLoading, setRating) {
     try {
-        const response = await fetch(`https://renter-production-faad.up.railway.app/api/user/getUserInfo/{userId}`, {
+        console.log("calling fetch")
+        const response = await fetch(`https://renter-production-faad.up.railway.app/api/user/getUserInfo/${userId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -23,11 +24,14 @@ async function fetchUserInfo(userId, setData, setError, setLoading, setRating) {
         if (!response.ok) {
             throw new Error("Something went wrong fetching data!");
         }
+        else {
+            console.log("first response ok")
+        }
 
         const json = await response.json();
         setData(json);
 
-        const response2 = await fetch(`https://renter-production-faad.up.railway.app/api/user/getAveRevScore/{userId}`, {
+        const response2 = await fetch(`https://renter-production-faad.up.railway.app/api/user/getAveRevScore/${userId}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -49,9 +53,7 @@ async function fetchUserInfo(userId, setData, setError, setLoading, setRating) {
 
 
 function SideBar() {
-    const location = useLocation();
     const { user } = useUser();
-    const { userId } = location.state || user.id;
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [rating, setRating] = useState(0);
@@ -59,14 +61,19 @@ function SideBar() {
 
 
     useEffect(() => {
-        if (userId) {
-            fetchUserInfo(userId, setData, setError, setLoading, setRating);
+        console.log("using effect")
+        if (user) {
+            console.log("user is found");
+            
+            fetchUserInfo(user.id, setData, setError, setLoading, setRating);
         }
-    }, [userId]);
+    }, [user]);
 
     if (loading) {
         return (
             <div>
+                
+            {user && user.id}
                 <h1>Loading...</h1>
             </div>
         )
