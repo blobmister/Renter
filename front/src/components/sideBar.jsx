@@ -19,10 +19,10 @@ function SideBar() {
     const postItem = async (e) => {
         e.preventDefault();
 
-        const payload = {itemName, itemDesc};
+        const payload = {item_name: itemName, description: itemDesc};
 
         try {
-            const response = await fetch("https://renter-production-faad.up.railway.app/api/item/", {
+            const response = await fetch("https://renter-production-faad.up.railway.app/api/items", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
