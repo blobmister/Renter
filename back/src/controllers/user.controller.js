@@ -6,13 +6,6 @@ const supabase = createClient(
     process.env.SUPABASE_SERVICE_KEY
 )
 
-const supabase2 = createClient(
-    process.env.SUPABASE_URL,
-    process.env.SUPABASE_SERVICE_KEY,
-    {
-        schema: 'auth'
-    }
-)
 
 const getReviews = async (req, res) => {
     try {
@@ -86,7 +79,7 @@ const getUserInfo = async (req, res) => {
     try {
         const userId = req.params.userId;
 
-        const { data, error } = await supabase2
+        const { data, error } = await supabase
             .from('userInfo')
             .select('*')
             .eq('id', userId);
