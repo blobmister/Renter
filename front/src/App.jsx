@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router'
+import { useUser } from './UserContext';
 import './App.css'
 
 function App() {
   let navigate = useNavigate();
+  const {user} = useUser();
 
   return (
     <div className='landingContainer'>
@@ -13,10 +15,16 @@ function App() {
       <div className='body'>
         <div className='sidebar'>
           <div className='search'>
-            <p style={{margin: 0}}>Search</p>
+            <p>Search</p>
           </div>
           <div className='profile'>
-            Profile
+            <ul>
+              <li>My Profile {user && user.email}</li>
+              <li>Conversations</li>
+              <li>Items Listed</li>
+              <li>Items Saved</li>
+            </ul>
+            
             <button onClick={() => {console.log("hi"); navigate("/dashboard")}}>Go to Dashboard</button>
           </div>
         </div>
