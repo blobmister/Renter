@@ -6,6 +6,14 @@ const supabase = createClient(
     process.env.SUPABASE_SERVICE_KEY
 )
 
+const supabase2 = createClient(
+    process.env.SUPABASE_URL,
+    process.env.SUPABASE_SERVICE_KEY,
+    {
+        schema: 'auth'
+    }
+)
+
 const getReviews = async (req, res) => {
     try {
         const userId = req.params.userId;
@@ -78,8 +86,8 @@ const getUserInfo = async (req, res) => {
     try {
         const userId = req.params.userId;
 
-        const { data, error } = await supabase
-            .from('auth.users')
+        const { data, error } = await supabase2
+            .from('userInfo')
             .select('*')
             .eq('id', userId);
 
@@ -91,13 +99,7 @@ const getUserInfo = async (req, res) => {
             return res.status(403).json({error: 'No user found'});
         }
 
-        const user = data[0];
-        const Id = user.id;
-        const name = user.user_metadata?.name || null;
-        const location = user.user_metadata?.location || null;
-        const description  = user.user_metadata?.description || null;
-
-        return res.status(200).json({Id, name, location, description});
+        return res.status(200).json({Id: data.id, name: data.name, location: data.location, description: data.description});
     } catch (err) {
         return res.status(500).json({error: 'Internal Server Error'});
     }

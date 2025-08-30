@@ -9,21 +9,36 @@ const supabase = createClient(
 const registerUser = async (req, res) => {
     const { name, email, password, location } = req.body;
 
-    if (!name || !email || !password || !location)
-        return res.status(400).json({ error: 'Email and password required' });
+    if (!name || !email || !password || !location) {
+        return res.status(400).json({ error: 'Name, email, password and location are required' });
+    }
 
     try {
+        // Create user in Supabase auth
         const { data, error } = await supabase.auth.admin.createUser({
             email,
             password,
             email_confirm: true,
-            user_metadata: {
-                name: name,
-                location: location,
-            }
         });
 
-        if (error) return res.status(400).json({ error: error.message });
+        if (error) {
+            return res.status(400).json({ error: error.message });
+        }
+
+        const user = data.user;
+
+        // Insert extra profile info in userInfo
+        const { error: insertError } = await supabase
+            .from('userInfo')
+            .insert({
+                id: user.id, // link to auth.users
+                name,
+                location
+            });
+
+        if (insertError) {
+            return res.status(400).json({ error: insertError.message });
+        }
 
         res.status(201).json({ message: 'User registered', user: data });
     } catch (err) {
@@ -31,6 +46,7 @@ const registerUser = async (req, res) => {
         res.status(500).json({ error: 'Internal server error' });
     }
 };
+
 
 const loginUser = async (req, res) => {
     const { email, password } = req.body;
