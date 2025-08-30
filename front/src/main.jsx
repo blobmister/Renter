@@ -13,9 +13,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <UserProvider>
       <BrowserRouter>
-        <nav>
+        {/* <nav>
           <Link to="/">Home</Link> | <Link to="/login">Login</Link>
-        </nav>
+        </nav> */}
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="/dashboard" element={<Dashboard />} />

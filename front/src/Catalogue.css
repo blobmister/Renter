@@ -21,6 +21,17 @@
     margin-bottom: 20px;
 }
 
+.header-section {
+    position: sticky;
+    /* sticks while scrolling */
+    top: 0;
+    background: white;
+    /* so text doesn’t overlap grid */
+    padding: 10px 0 20px;
+    z-index: 10;
+    /* stay above grid */
+}
+
 .grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;

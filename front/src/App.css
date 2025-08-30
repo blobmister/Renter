@@ -1,22 +1,33 @@
 #root {
-  margin: 0 auto;
+  margin: 0;
   padding: 0;
   text-align: center;
+  width: 100vw;
+  height: 100vh
 }
 
 .landingContainer {
-  height: 100vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   left: 0;
+  top: 0;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   padding: 0;
+  margin: 0;
 }
 
 .body {
   width: 100%;
   height: 100%;
-  background-color: red;
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
 }
 
 .header {
@@ -31,8 +42,12 @@
 }
 
 .search {
-  height: 50%;
-  background-color: aqua;
+  height: 5%;
+  width: 10%;
+  background-color: white;
+  color: black;
+  border: none !important;
+  align-self: center;
 }
 
 .search-bar {
@@ -42,13 +57,24 @@
   font-size: 1rem;
   margin: 10px auto 20px;
   display: block;
-  border-radius: 8px;
-  border: 1px solid #ccc;
-  outline: none;
+  border: none !important;
+  outline: none !important;
+  border-radius: 0 !important;
   box-sizing: border-box;
+  background-color: transparent;
+  align-self: center;
 }
 
 .search-bar:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+  /* border-bottom: 1px solid white !important; */
+  text-decoration: underline;
+}
+
+.profile-button {
+  background: transparent;
+  border: none;
+}
+
+.profile-button:hover {
+  text-decoration: underline;
 }

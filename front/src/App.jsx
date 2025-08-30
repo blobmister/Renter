@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router'
 import { useUser } from './UserContext';
 import './App.css'
+import TopBar from './components/topBar.jsx'
 
 function App() {
   let navigate = useNavigate();
@@ -9,28 +10,14 @@ function App() {
 
   return (
     <div className='landingContainer'>
-      <div className='header'>
-        <p>Logo</p>
+      <div className="body">
+          <TopBar />
+        <input className="search-bar" type="text" name="search" placeholder="enter keyword(s)"></input>
+        <input className="search-bar" type="text" name="location" placeholder="enter location"></input>
+        <button className="search" onClick={() => navigate('/catalogue')}>search</button>
+        <button className="profile-button" onClick={() => {user ? navigate('/dashboard') : navigate('/login')}}>{ user ? "My Profile" : "Login/Register" }</button>
       </div>
-      <div className='body'>
-        <div className='sidebar'>
-          <div className='search'>
-            <p>Search</p>
-          </div>
-          <div className='profile'>
-            <ul>
-              <li>My Profile {user && user.email}</li>
-              <li>Conversations</li>
-              <li>Items Listed</li>
-              <li>Items Saved</li>
-            </ul>
-            
-            <button onClick={() => {console.log("hi"); navigate("/dashboard")}}>Go to Dashboard</button>
-            <button onClick={() => {console.log("hi"); navigate("/catalogue")}}>Search</button>
-          </div>
-        </div>
-        <div className='map'></div>
-      </div>
+
     </div>
   )
 }
