@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 import "./AccountForm.css"
 
-export default function Login() {
-    const login = () => {
+export default function Register() {
+    const createAccount = () => {
         console.log("post")
     }
 
@@ -13,10 +13,13 @@ export default function Login() {
                 <p>Login to start Renting or Lending!</p>
                 <input type="email" placeholder="Email" />
                 <input type="password" placeholder="Password" />
+                <input type="text" placeholder="Name" />
+                <input type="text" placeholder="Location" />
 
-                <button onClick={login}>Login</button>
 
-                <p>Don't have an account? <Link to="/register">Register Now!</Link></p>
+                <button onClick={createAccount}>Register</button>
+
+                <p>Already have an account? <Link to="/login">Login Now!</Link></p>
             </div>
         </div>
     );
