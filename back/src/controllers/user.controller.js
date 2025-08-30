@@ -92,7 +92,9 @@ const getUserInfo = async (req, res) => {
             return res.status(403).json({error: 'No user found'});
         }
 
-        return res.status(200).json({Id: data.id, name: data.name, location: data.location, description: data.description});
+        const user = data[0];
+
+        return res.status(200).json({Id: user.id, name: user.name, location: user.location, description: user.description});
     } catch (err) {
         return res.status(500).json({error: 'Internal Server Error'});
     }
