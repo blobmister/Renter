@@ -6,6 +6,10 @@ function TopBar() {
 
     return (
         <div style={{ width: "100%", height: "90px", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px solid #989898", top: "0", left: "0", margin: "0", padding: "0"}}>
+            <h1
+                onClick={() => navigate("/")}
+                style={{ cursor: "pointer", margin: 0 }}
+                >RentOut</h1>
             <img 
                 onClick={() => navigate('/')}
                 src="/src/assets/output-onlinegiftools.gif"

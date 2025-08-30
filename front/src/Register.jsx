@@ -63,7 +63,38 @@ export default function Register() {
     return (
         <div className="container">
             <div className="inputBlock">
-                <h1>RentOut</h1>
+                <div
+                    style={{
+                        width: "100%",
+                        height: "90px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        top: "0",
+                        left: "0",
+                        margin: "0",
+                        padding: "0",
+                        gap: "12px",
+                    }}
+                >
+                <h1
+                    onClick={() => navigate("/")}
+                    style={{ cursor: "pointer", margin: 0 }}
+                    >RentOut</h1>
+
+                <img
+                    onClick={() => navigate("/")}
+                    src="/src/assets/output-onlinegiftools.gif"
+                    alt="Logo"
+                    style={{
+                    height: "60px",
+                    width: "60px",
+                    borderRadius: "50%",
+                    cursor: "pointer",
+                    objectFit: "cover",
+                    }}
+                />
+                </div>
                 <p>Register an account to start Renting or Lending!</p>
 
                 <form onSubmit={createAccount}>
