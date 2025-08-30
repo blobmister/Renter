@@ -66,7 +66,7 @@ function SideBar() {
         const payload = { item_name: itemName, description: itemDesc };
 
         try {
-            const response = await fetch(`https://renter-production-faad.up.railway.app/api/items/{user.id}`, {
+            const response = await fetch(`https://renter-production-faad.up.railway.app/api/items/${user.id}`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
