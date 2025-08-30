@@ -2,16 +2,18 @@
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    margin: 1em;
+    margin: 1em 1em 0.5em 1em;
     background-color: #fff;
-    height: 10em;
-    width: calc(100vw - 32em);
-    height: 25vh;
+    width: calc(100vw - 36em);
+    height: auto;
     border-radius: 10px;
 }
 
 .items-container {
+    /* display: grid;
+    grid-template-columns: repeat(6, 1fr); */
     display: flex;
+    gap: 1em;
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
@@ -19,14 +21,19 @@
     /* border: 1px solid #000000; */
     margin: 0;
     margin-bottom: 1em;
-    padding-left: 1em
+    padding-left: 1em;
+    padding-right: 1em;
+    box-sizing: border-box;
+    overflow-x: auto;
+    overflow-y: hidden;
+    white-space: nowrap;
 }
 
 .collection-title {
     font-size: 1.5em;
     font-weight: bold;
     background-color: transparent;
-    color: #000000;
+    color: #1c2027;
     text-align: left;
     /* border: 1px solid #000000; */
     padding-left: 0.8em;
@@ -38,17 +45,26 @@
 }
 
 .item-thumbnail {
-    width: calc(10em - 1.5em - 2em);
-    height: calc(10em - 1.5em - 2em);    
-    margin: 0 0 0 1em;
+    flex: 0 0 calc((100vw - 36em - 7em) / 6);
+    width: calc((100vw - 36em - 7em) / 6);
+    aspect-ratio: 1;
     border-radius: 10%;
-    border: 1px solid #000000;
+    border: 2px solid #1c2027;
+    background-color: #ffec3d;
+    color: #1c2027;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease;
+    overflow: auto;
+}
+
+.item-thumbnail:hover {
+    filter: grayscale(0%);
 }
 
 .user-thumbnail {
-    width: calc(10em - 1.5em - 2em);
-    height: calc(10em - 1.5em - 2em);  
-    margin: 0 1em 0 0;
+    flex: 0 0 calc((100vw - 36em - 7em) / 6);
+    width: calc((100vw - 36em - 7em) / 6);
+    aspect-ratio: 1;
     border-radius: 50%;
     border: 2px solid #1c2027;
     background-color: #ffec3d;
@@ -59,4 +75,30 @@
 
 .user-thumbnail:hover {
     filter: grayscale(0%);
+}
+
+.expanded-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin: 1em 1em 0.5em 1em;
+    background-color: #1c2027;
+    width: calc(100vw - 36em);
+    border-radius: 10px;
+    background-color: white;
+    height: 100%;
+}
+
+.expanded-container .items-container {
+    display: grid;
+    grid-template-columns: repeat(6,1fr);
+    gap: 1em;
+    margin: 0;
+    margin-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    box-sizing: border-box;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
 }
