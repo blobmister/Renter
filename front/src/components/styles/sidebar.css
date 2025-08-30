@@ -1,0 +1,34 @@
+.sidebar-container {
+  width: 32em;
+  height: calc(100vh - 2em);
+  padding: 1em;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  top: 2em;
+  left: 0;
+  align-items: flex-start;
+  z-index: 100;
+  overflow-y: auto;
+  flex-wrap: nowrap;
+  border-right: 1px solid #989898;
+}
+
+.pic-name-container {
+  display: flex;
+  align-items: flex-start;
+  align-content: flex-start;
+  flex-direction: row;
+  padding: 0.5em;
+}
+
+.user-name {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+
+.text-body {
+  font-size: 1em;
+  color: #bbb;
+  text-align: justify;
+}
