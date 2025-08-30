@@ -5,6 +5,7 @@ import './index.css'
 import App from './App.jsx'
 import Login from "./Login.jsx"
 import Register from './Register.jsx';
+import Dashboard from './components/dashboard.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -14,6 +15,7 @@ createRoot(document.getElementById('root')).render(
       </nav>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
