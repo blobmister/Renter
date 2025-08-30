@@ -6,16 +6,18 @@ function TopBar() {
 
     return (
         <div style={{ width: "100%", height: "90px", display: "flex", alignItems: "center", justifyContent: "center", borderBottom: "1px solid #989898", top: "0", left: "0", margin: "0", padding: "0"}}>
-            <span 
+            <img 
                 onClick={() => navigate('/')}
+                src="/src/assets/output-onlinegiftools.gif"
+                alt="Logo"
                 style={{
-                height: '40px',
-                width: '40px',
-                backgroundColor: '#bbb',
-                borderRadius: '50%',
-                display: 'inline-block',
-                padding: '0.5em'
-            }}></span>
+                    height: '60px',
+                    width: '60px',
+                    borderRadius: '50%',
+                    cursor: 'pointer',
+                    objectFit: 'cover'
+                }}
+            />
         </div>
     )
 }

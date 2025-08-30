@@ -10,23 +10,25 @@
     width: 100%;
     padding: 0;
     margin: 0;
-    background: white;
+    background: #1c2027;
     font-family: sans-serif;
     text-align: center;
     flex-direction: column;
     align-items: center;
+    color: white;
 }
 
 .container h1 {
     font-size: 2rem;
     margin-bottom: 20px;
+    color: #ffec3d;
 }
 
 .header-section {
     position: sticky;
     /* sticks while scrolling */
     top: 0;
-    background: white;
+    background: #1c2027;
     /* so text doesn’t overlap grid */
     padding: 10px 0 20px;
     z-index: 10;
@@ -43,16 +45,16 @@
 }
 
 .card {
-    background: white;
+    background: #1c2027;
     border-radius: 10px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(255, 236, 61, 0.1);
     overflow: hidden;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 6px 16px rgba(255, 236, 61, 0.15);
 }
 
 .card img {
@@ -63,22 +65,24 @@
 
 .card-content {
     padding: 15px;
+    color: white;
 }
 
 .card-content h2 {
     font-size: 1.2rem;
     margin: 0 0 10px;
+    color: #ffec3d;
 }
 
 .card-content p {
-    color: #666;
+    color: white;
     margin: 0 0 10px;
 }
 
 .card-content button {
     width: 100%;
     padding: 10px;
-    background: #007bff;
+    background: #ffec3d;
     color: white;
     border: none;
     border-radius: 6px;
@@ -87,7 +91,7 @@
 }
 
 .card-content button:hover {
-    background: #0056b3;
+    background: #ffffff;
 }
 
 .modal {
@@ -96,7 +100,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(255, 236, 61, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,12 +125,12 @@
     margin: 10px auto 20px;
     display: block;
     border-radius: 8px;
-    border: 1px solid #ccc;
+    border: 1px solid #ffec3d;
     outline: none;
     box-sizing: border-box;
 }
 
 .search-bar:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.2);
+    border-color: #ffec3d;
+    box-shadow: 0 0 0 2px rgba(255, 236, 61, 0.2);
 }
