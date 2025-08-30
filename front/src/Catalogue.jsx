@@ -85,7 +85,7 @@ export default function CataloguePage() {
       <div className="grid">
         {filteredItems.map((item) => (
           <div key={item.id} className="card" onClick={() => openModal(item)}>
-            <img src={`/public/assets/${item.image}`} alt={item.name} />
+            <img src={`/assets/${item.image}`} alt={item.name} />
             <div className="card-content">
               <h2>{item.name}</h2>
               <p>{item.price || "Price not listed"}</p>  
@@ -99,7 +99,11 @@ export default function CataloguePage() {
         <div className="modal" onClick={closeModal}>
           <div className="modal-content">
             <h2>{modalItem.name}</h2>
-            <img src={`/public/assets/${modalItem.image}`} alt={modalItem.name} />
+            <img 
+              src={`/assets/${modalItem.image}`}
+              alt={modalItem.name}
+              className="modal-img"
+            />
             <h3>Description</h3>
             <p>{modalItem.description}</p>
             <h3>Lister Profile</h3>

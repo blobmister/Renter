@@ -109,13 +109,27 @@
 }
 
 .modal-content {
-    background: white;
+    background: #1c2027;
     padding: 30px;
     border-radius: 12px;
     max-width: 500px;
     width: 80%;
     text-align: left;
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.modal-content img {
+    max-width: 100%;
+    /* never exceed viewport width */
+    max-height: 40%;
+    /* never exceed viewport height */
+    width: auto;
+    /* keep aspect ratio */
+    height: auto;
+    /* keep aspect ratio */
+    object-fit: contain;
+    display: block;
+    margin: 0 auto;
 }
 
 .search-bar {
