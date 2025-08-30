@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { useNavigate } from "react-router";
+import { useUser } from "./UserContext";
 import "./AccountForm.css"
 
 export default function Register() {
     const [email, setEmail] = useState("");
     const [password, setPassword ] = useState("");
+
+    const {user, userLogin, logout} = useUser();
 
     let navigate = useNavigate();
 
@@ -24,8 +27,13 @@ export default function Register() {
 
             if (response.ok) {
                 const data = await response.json();
-                const user = data.user;
-                console.log("Logged in!", data);
+                const session = data.session;
+                console.log("Logged in!", session);
+
+                const token = session.access_token;
+                localStorage.setItem("token", token);
+
+                userLogin(session.user);
 
                 navigate("/")
             }

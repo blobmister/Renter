@@ -28,12 +28,32 @@ export default function Register() {
                 const data = await response.json();
                 const user = data.user;
                 console.log("Registered!", data);
-                navigate("/")
             }
         } catch (err) {
             console.error(err);
         }
 
+        //Login
+        try {
+            const response = await fetch("https://renter-production-faad.up.railway.app/api/auth/login", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                const session = data.user;
+                console.log("Logged in!", session);
+
+                const token = session.access_token;
+                localStorage.setItem("token", token);
+
+                navigate("/")
+            }
+        } catch (err) {
+            console.error(err);
+        }
     }
 
     return (
