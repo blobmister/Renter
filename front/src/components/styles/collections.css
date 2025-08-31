@@ -61,16 +61,20 @@
 .item-thumbnail {
     height: 80px;
     width: 80px;
-    border: none;
-    padding: 0;
+    background-color: blue;
+    border-width: 2px;
+    border-color: black;
+    padding: 2px;
     background: none;
     cursor: pointer;
     display: inline-block;
+    justify-content: center;
+    align-items: center;
 }
 
 .thumbnail-image {
-    width: auto;
     height: 100%;
+    aspect-ratio: 1;
     display: block;
     object-fit: contain;
     border-radius: 4px;

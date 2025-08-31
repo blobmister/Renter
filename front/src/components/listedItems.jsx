@@ -12,7 +12,7 @@ function ListedItems({ isExpanded, onExpand, onCollapse }) {
     "drill3.jpeg"
   ];
 
-  const visibleItems = isExpanded ? items : items.slice(0, 3);
+  const visibleItems = isExpanded ? items : items.slice(0, 5);
 
   return (
     <div className={isExpanded ? "expanded-container" : "minimised-container"}>
