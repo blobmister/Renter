@@ -45,7 +45,7 @@ async function fetchUserInfo(userId, setData, setError, setLoading, setRating) {
 function SideBar() {
     const { user } = useUser();
     const [data, setData] = useState(null);
-    const [rating, setRating] = useState(0);
+    const [rating, setRating] = useState(4);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
