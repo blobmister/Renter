@@ -67,6 +67,7 @@
   background-color: transparent;
   align-self: center;
   color:white;
+  text-align: center;
 }
 
 .search-bar:focus {
