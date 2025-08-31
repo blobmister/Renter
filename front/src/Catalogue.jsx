@@ -102,7 +102,7 @@ export default function CataloguePage() {
             <img 
               src={`/assets/${modalItem.image}`}
               alt={modalItem.name}
-              className="modal-img"
+              className="product-img"
             />
             <h3>Description</h3>
             <p>{modalItem.description}</p>
@@ -110,7 +110,7 @@ export default function CataloguePage() {
             <img
               src="https://via.placeholder.com/150"
               alt="Profile"
-              className="w-32 h-32 rounded-full mx-auto border-4 border-blue-500 shadow-md"
+              className="profile-img"
             />
             <button onClick={() => {navigate("/dashboard")}}>{modalItem.lister}</button>
           </div>

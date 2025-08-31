@@ -118,18 +118,31 @@
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
-.modal-content img {
+/* Product image inside modal */
+.modal-content .product-img {
     max-width: 100%;
-    /* never exceed viewport width */
     max-height: 40%;
-    /* never exceed viewport height */
     width: auto;
-    /* keep aspect ratio */
     height: auto;
-    /* keep aspect ratio */
     object-fit: contain;
     display: block;
     margin: 0 auto;
+    /* keep centered */
+}
+
+/* Profile image inside modal */
+.modal-content .profile-img {
+    width: 128px;
+    /* like w-32 in Tailwind */
+    height: 128px;
+    /* h-32 */
+    border-radius: 50%;
+    border: 4px solid #3b82f6;
+    /* blue-500 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: block;
+    margin: 0;
+    /* left align */
 }
 
 .search-bar {
