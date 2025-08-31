@@ -2,6 +2,7 @@ import './styles/sidebar.css';
 import Modal from "react-modal";
 import { useEffect, useState } from "react";
 import { useUser } from "../UserContext.jsx";
+import dummyPfp from "./../assets/John.png";
 
 Modal.setAppElement('#root');
 
@@ -94,7 +95,7 @@ function SideBar() {
     return (
         <div className="sidebar-container">
             <div className="pic-name-container">
-                <span className="profile-pic"></span>
+                <span className="profile-pic"><img style={{height:"100%", width:"100%", borderRadius: "50%"}} src={dummyPfp}></img></span>
                 <div className="user-info">
                     <p className="user-name">{data?.name || "John Doe"}</p>
                     <p className="user-location">{data?.location || "Sydney"}</p>
