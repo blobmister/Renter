@@ -43,7 +43,7 @@
     border: transparent;
     text-decoration: underline;
 }
-
+/*
 .item-thumbnail {
     flex: 0 0 calc((100vw - 36em - 7em) / 6);
     width: calc((100vw - 36em - 7em) / 6);
@@ -55,6 +55,25 @@
     filter: grayscale(100%);
     transition: filter 0.3s ease;
     overflow: auto;
+}
+*/
+
+.item-thumbnail {
+    height: 80px;
+    width: 80px;
+    border: none;
+    padding: 0;
+    background: none;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.thumbnail-image {
+    width: auto;
+    height: 100%;
+    display: block;
+    object-fit: contain;
+    border-radius: 4px;
 }
 
 .item-thumbnail:hover {
