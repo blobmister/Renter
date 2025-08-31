@@ -12,6 +12,7 @@ function App() {
     <div className='landingContainer'>
       <div className="body">
           <TopBar />
+        {user && <h2>Welcome Back, {user.email}!</h2>}
         <input className="search-bar" type="text" name="search" placeholder="Type keyword(s)..."></input>
         <input className="search-bar" type="text" name="location" placeholder="Search location..."></input>
         <button className="search" onClick={() => navigate('/catalogue')}>Search</button>
