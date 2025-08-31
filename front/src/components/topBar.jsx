@@ -9,7 +9,7 @@ function TopBar() {
             <h1
                 onClick={() => navigate("/")}
                 style={{ cursor: "pointer", margin: 0 }}
-                >RentOut</h1>
+                >Renter</h1>
             <img 
                 onClick={() => navigate('/')}
                 src="/src/assets/output-onlinegiftools.gif"

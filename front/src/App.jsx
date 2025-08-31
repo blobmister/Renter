@@ -12,10 +12,10 @@ function App() {
     <div className='landingContainer'>
       <div className="body">
           <TopBar />
-        <input className="search-bar" type="text" name="search" placeholder="enter keyword(s)"></input>
-        <input className="search-bar" type="text" name="location" placeholder="enter location"></input>
-        <button className="search" onClick={() => navigate('/catalogue')}>search</button>
-        <button className="profile-button" onClick={() => {user ? navigate('/dashboard') : navigate('/login')}}>{ user ? "My Profile" : "Login/Register" }</button>
+        <input className="search-bar" type="text" name="search" placeholder="Type keyword(s)..."></input>
+        <input className="search-bar" type="text" name="location" placeholder="Search location..."></input>
+        <button className="search" onClick={() => navigate('/catalogue')}>Search</button>
+        <button className="profile-button" onClick={() => {user ? navigate('/dashboard') : navigate('/login')}}>{ user ? "My Profile >" : "Login/Register" }</button>
       </div>
 
     </div>
